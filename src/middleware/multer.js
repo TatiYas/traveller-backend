@@ -1,14 +1,19 @@
 import multer from 'multer';
+import createHttpError from 'http-errors';
+
+const storage = multer.memoryStorage();
+
+const fileFilter = (req, file, cb) => {
+  if (!file.mimetype || !file.mimetype.startsWith('image/')) {
+    return cb(createHttpError(400, 'Завантажувати можна лише зображення!'), false);
+  }
+  cb(null, true);
+};
 
 export const upload = multer({
-  storage: multer.memoryStorage(),
+  storage,
   limits: {
-    fileSize: 2 * 1024 * 1024,
-  },
-  fileFilter: (req, file, cb) => {
-    if (!file.mimetype || !file.mimetype.startsWith('image/')) {
-      return cb(new Error('Only images allowed'));
-    }
-    cb(null, true);
-  },
+    fileSize: 5 * 1024 * 1024,
+},
+  fileFilter,
 });
