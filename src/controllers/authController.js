@@ -8,7 +8,7 @@ import { refreshUsersSession } from '../services/auth.js';
 
 const setupSession = (res, session) => {
   // eslint-disable-next-line no-undef
-  const isProd = process.env.NODE_ENV === 'development';
+  const isProd = process.env.NODE_ENV === 'productio';
 
   const cookieOptions = {
     httpOnly: true,
