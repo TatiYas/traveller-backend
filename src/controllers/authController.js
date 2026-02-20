@@ -87,7 +87,7 @@ export const refreshUserSession = async (req, res, next) => {
 
     const session = await Session.findOne({ _id: sessionId, refreshToken });
     if (!session) {
-      throw createHttpError(401, 'Сесію не знайдено або токен невалідний');
+      throw createHttpError(401, 'Сесію не знайдено / токен невалідний');
     }
 
     if (new Date() > new Date(session.refreshTokenValidUntil)) {
