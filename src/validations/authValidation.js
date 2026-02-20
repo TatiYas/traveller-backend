@@ -14,3 +14,23 @@ export const loginUserSchema = {
     password: Joi.string().required(),
   }),
 };
+import { Segments, Joi } from 'celebrate';
+
+export const requestResetSchema = {
+  [Segments.BODY]: Joi.object({
+    email: Joi.string().email().required(),
+  }),
+};
+
+export const resetPasswordSchema = {
+  [Segments.BODY]: Joi.object({
+    token: Joi.string().length(64).required(),
+    password: Joi.string()
+      .min(8)
+      .max(128)
+      .pattern(/[A-Z]/)
+      .pattern(/[a-z]/)
+      .pattern(/[0-9]/)
+      .required(),
+  }),
+};
