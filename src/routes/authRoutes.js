@@ -1,26 +1,14 @@
 import { Router } from 'express';
-import { loginUserSchema, registerUserSchema } from '../validation/auth.js';
-import {
-  registerUserController,
-  loginUserController,
-  logoutUserController,
-  refreshUserSessionController,
-} from '../controllers/auth.js';
-import { validateBody } from '../middlewares/validateBody.js';
-import { authenticate } from '../middlewares/authenticate.js';
+import { loginUserSchema, registerUserSchema } from '../validations/authValidation.js';
+import { celebrate } from 'celebrate';
+import { registerUser, loginUser } from '../controllers/authController.js';
+
 
 const router = Router();
 
-router.post(
-  '/register',
-  validateBody(registerUserSchema),
-  registerUserController,
-);
 
-router.post('/login', validateBody(loginUserSchema), loginUserController);
-
-router.post('/logout', authenticate, logoutUserController);
-
-router.post('/refresh-session', refreshUserSessionController);
+router.post("/auth/register", celebrate(registerUserSchema), registerUser);
+router.post("/auth/login", celebrate(loginUserSchema), loginUser);
+//...
 
 export default router;
