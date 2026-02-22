@@ -26,10 +26,7 @@ router.post(
   requestResetEmail,
 );
 router.post("/auth/logout", authenticate, logoutUser);
-
-// Потрібно буде додати пізніше:
-// router.post("/auth/reset-password", celebrate(resetPasswordSchema), resetPassword);
-
+router.post("/auth/reset-password", celebrate(resetPasswordSchema), resetPassword);
 router.get("/auth/check", checkSession);
 
 export default router;
