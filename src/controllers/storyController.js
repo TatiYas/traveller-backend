@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import createHttpError from "http-errors";
 import { Story } from "../models/story.js";
 import { User } from "../models/user.js";
@@ -49,6 +50,10 @@ export const getStoryById = async (req, res) => {
 
   res.status(200).json(story);
 };
+=======
+import { createHttpError } from "http-errors";
+import Story from "../models/story.js";
+>>>>>>> origin
 
 export const getMyStories = async (req, res) => {
   const { page = 1, perPage = 10 } = req.query;
