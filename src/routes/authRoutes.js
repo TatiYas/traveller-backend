@@ -11,7 +11,9 @@ import {
   refreshUserSession,
   requestResetEmail,
   logoutUser,
+  resetPassword,
   checkSession,
+
 } from "../controllers/authController.js";
 import { authenticate } from "../middleware/authenticate.js";
 
