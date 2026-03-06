@@ -13,6 +13,7 @@ import {
   requestResetEmail,
   logoutUser,
   checkSession,
+  resetPassword,
 } from "../controllers/authController.js";
 import { authenticate } from "../middleware/authenticate.js";
 
