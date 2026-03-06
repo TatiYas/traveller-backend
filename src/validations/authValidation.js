@@ -20,4 +20,3 @@ export const requestResetEmailSchema = {
     email: Joi.string().email().max(64).required(),
   }),
 };
-gi
